@@ -110,13 +110,23 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/UI.js":
+/*!*******************!*\
+  !*** ./src/UI.js ***!
+  \*******************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"UI\": () => (/* binding */ UI)\n/* harmony export */ });\n/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! . */ \"./src/index.js\");\n\n\nconst UI = {\n  locationInput: document.querySelector(\"#location-input\"),\n  submitLocation: document.querySelector(\"#submit\"),\n  location: document.querySelector(\"#location\"),\n  condition: document.querySelector(\"#condition\"),\n  celsius: document.querySelector(\"#celsius\"),\n  fahrenheit: document.querySelector(\"#fahrenheit\"),\n  wind: document.querySelector(\"#wind\"),\n  displayConditions: function (data) {\n    this.location.textContent = `Here's the forecast for ${data.location.name}, ${data.location.region}`;\n    this.condition.textContent = data.current.condition.text;\n    this.celsius.textContent = data.current.temp_c;\n    this.fahrenheit.textContent = data.current.temp_f;\n    this.wind.textContent = data.current.gust_kph;\n  },\n\n  displayInvalid: function () {\n    this.location.textContent = `Enter a valid location!`;\n    this.condition.textContent = \"\";\n    this.celsius.textContent = \"\";\n    this.fahrenheit.textContent = \"\";\n    this.wind.textContent = \"\";\n  },\n};\n\nUI.submitLocation.addEventListener(\"click\", () => {\n  (0,___WEBPACK_IMPORTED_MODULE_0__[\"default\"])(UI.locationInput.value);\n});\n\n\n\n\n//# sourceURL=webpack://weather-app/./src/UI.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\nconst locationInput = document.querySelector(\"#location-input\");\nconst submitLocation = document.querySelector(\"#submit\");\nconst location = document.querySelector(\"#location\");\nconst condition = document.querySelector(\"#condition\");\nconst celsius = document.querySelector(\"#celsius\");\nconst fahrenheit = document.querySelector(\"#fahrenheit\");\nconst wind = document.querySelector(\"#wind\");\n\nasync function getWeather(placename) {\n  try {\n    const response = await fetch(\n      `http://api.weatherapi.com/v1/current.json?key=2b309fb13e8445beb4f160830230105&q=${placename}&aqi=no`\n    );\n    const weatherData = await response.json();\n    displayConditions(weatherData);\n  } catch {\n    displayInvalid();\n  }\n}\n\nfunction displayConditions(data) {\n  location.textContent = `Here's the forecast for ${data.location.name}, ${data.location.region}`;\n  condition.textContent = data.current.condition.text;\n  celsius.textContent = data.current.temp_c;\n  fahrenheit.textContent = data.current.temp_f;\n  wind.textContent = data.current.gust_kph;\n}\n\nfunction displayInvalid() {\n  location.textContent = `Enter a valid location!`;\n  condition.textContent = \"\";\n  celsius.textContent = \"\";\n  fahrenheit.textContent = \"\";\n  wind.textContent = \"\";\n}\n\nsubmitLocation.addEventListener(\"click\", () => {\n  getWeather(locationInput.value);\n});\n\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ getWeather)\n/* harmony export */ });\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _UI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UI.js */ \"./src/UI.js\");\n\n\n\nasync function getWeather(placename) {\n  try {\n    const response = await fetch(\n      `http://api.weatherapi.com/v1/current.json?key=2b309fb13e8445beb4f160830230105&q=${placename}&aqi=no`\n    );\n    const weatherData = await response.json();\n    _UI_js__WEBPACK_IMPORTED_MODULE_1__.UI.displayConditions(weatherData);\n  } catch (error) {\n    _UI_js__WEBPACK_IMPORTED_MODULE_1__.UI.displayInvalid();\n  }\n}\n\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
 
 /***/ })
 
@@ -196,7 +206,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
 /******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
 /******/ 	
 /******/ })()
