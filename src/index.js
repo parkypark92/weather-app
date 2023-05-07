@@ -12,3 +12,7 @@ export default async function getWeather(placename) {
     UI.displayInvalid();
   }
 }
+
+window.addEventListener("load", () => {
+  UI.location.textContent = "Welcome!";
+});

@@ -8,13 +8,29 @@
     <title>Weather App</title>
 </head>
 <body>
-    <label for="location-input">Enter Location:</label>
-    <input type="text" id="location-input">
-    <button type="button" id="submit">Get Weather!</button>
-    <h2 id="location"></h2>
-    <p id="condition"></p>
-    <p id="celsius"></p>
-    <p id="fahrenheit"></p>
-    <p id="wind"></p>
+    <div class="main-contain">
+        <div class="input-contain">
+            <input type="text" id="location-input" placeholder="Enter Location...">
+            <button type="button" id="submit">Get Weather!</button>
+        </div>
+        <h2 id="location"></h2>
+        <div class="icons-contain">
+            <img id="sun-icon" src="" alt="">
+            <img id="sun-cloud-icon" src="" alt="">
+            <img id="cloud-icon" src="" alt="">
+            <img id="rain-icon" src="" alt="">
+            <img id="sun-rain-icon" src="" alt="">
+        </div>
+        <div class="condition-contain">
+            <img id="icon" src="" alt="">
+            <h3 id="condition"></h3>
+        </div>
+        <div class="info-contain">
+            <p id="celsius"></p>
+            <p id="fahrenheit"></p>
+            <p id="rain"></p>
+            <p id="wind"></p>
+        </div>
+    </div>
 </body>
 </html>
