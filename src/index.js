@@ -9,7 +9,8 @@ export default async function getWeather(placename) {
     const weatherData = await response.json();
     UI.displayConditions(weatherData);
   } catch (error) {
-    UI.displayInvalid();
+    error = "error";
+    UI.displayInvalid(error);
   }
 }
 

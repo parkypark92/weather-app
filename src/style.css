@@ -11,7 +11,8 @@ html, body {
 body {
     display: flex;
     justify-content: center;
-    background-color: rgb(204, 249, 255);
+    background-color:  #fffdf7;
+    transition: background-color 2s ease;
 }
 
 .main-contain {
@@ -58,4 +59,28 @@ body {
 
 .hide {
     display: none;
+}
+
+.sunny {
+    background-color: rgb(186, 242, 255);
+}
+
+.mild {
+    background-color: rgb(216, 248, 255);
+}
+
+.cold {
+    background-color: rgb(237, 252, 255);
+}
+
+.showers {
+    background-color: rgb(198, 229, 235);
+}
+
+.freezing {
+    background-color: rgb(245, 253, 255);
+}
+
+.thunder {
+    background-color: rgb(197, 197, 197);
 }
