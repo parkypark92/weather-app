@@ -27,7 +27,7 @@ const UI = {
     this.icons.classList.add("hide");
     this.conditionIcon.src = data.current.condition.icon;
     this.condition.textContent = `${data.current.condition.text}`;
-    this.celsius.textContent = `Temp (C): ${data.current.temp_c}`;
+    this.celsius.textContent = `Temp (C): ${data.current.temp_c}` + "\u00B0";
     this.fahrenheit.textContent = `Temp (F): ${data.current.temp_f}`;
     this.rain.textContent = `Precipitation: ${data.current.precip_mm}mm`;
     this.wind.textContent = `Wind: ${data.current.gust_kph}km/h`;
@@ -48,6 +48,12 @@ const UI = {
 
 UI.submitLocation.addEventListener("click", () => {
   getWeather(UI.locationInput.value);
+});
+
+UI.locationInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    getWeather(UI.locationInput.value);
+  }
 });
 
 UI.sunIcon.src = sun;
