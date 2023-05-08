@@ -73,6 +73,12 @@ body {
     align-items: center;
 }
 
+#celToFahr {
+    color: rgb(116, 116, 116);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .icons-contain {
     display: flex;
     justify-content: space-between;

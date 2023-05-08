@@ -1,4 +1,4 @@
-import getWeather from ".";
+import { getWeather, currentData } from ".";
 import sun from "./icons/113.png";
 import sunnyCloud from "./icons/116.png";
 import cloud from "./icons/119.png";
@@ -12,8 +12,9 @@ const UI = {
   location: document.querySelector("#location"),
   condition: document.querySelector("#condition"),
   conditionIcon: document.querySelector("#icon"),
-  celsius: document.querySelector("#celsius"),
-  fahrenheit: document.querySelector("#fahrenheit"),
+  temperature: document.querySelector("#temperature"),
+  celsius: true,
+  celToFahr: document.querySelector("#celToFahr"),
   rain: document.querySelector("#rain"),
   wind: document.querySelector("#wind"),
   icons: document.querySelector(".icons-contain"),
@@ -23,12 +24,12 @@ const UI = {
   rainIcon: document.querySelector("#rain-icon"),
   sunRainIcon: document.querySelector("#sun-rain-icon"),
   displayConditions: function (data) {
+    let temp = getTemp(data);
     this.location.textContent = `${data.location.name}, ${data.location.country}`;
     this.icons.classList.add("hide");
     this.conditionIcon.src = data.current.condition.icon;
     this.condition.textContent = `${data.current.condition.text}`;
-    this.celsius.textContent = `Temp (C): ${data.current.temp_c}` + "\u00B0";
-    this.fahrenheit.textContent = `Temp (F): ${data.current.temp_f}`;
+    this.temperature.textContent = temp;
     this.rain.textContent = `Precipitation: ${data.current.precip_mm}mm`;
     this.wind.textContent = `Wind: ${data.current.gust_kph}km/h`;
     changeBackgroundColor(data);
@@ -38,29 +39,25 @@ const UI = {
     this.icons.classList.remove("hide");
     this.condition.textContent = "";
     this.conditionIcon.src = "";
-    this.celsius.textContent = "";
-    this.fahrenheit.textContent = "";
+    this.temperature.textContent = "";
     this.rain.textContent = "";
     this.wind.textContent = "";
+    this.celToFahr.textContent = "";
     changeBackgroundColor(error);
   },
 };
 
-UI.submitLocation.addEventListener("click", () => {
-  getWeather(UI.locationInput.value);
-});
-
-UI.locationInput.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    getWeather(UI.locationInput.value);
+function getTemp(data) {
+  let temp = "";
+  if (UI.celsius === true) {
+    temp = `Temp (C): ${data.current.temp_c}` + "\u00B0";
+    UI.celToFahr.textContent = "Fahrenheit";
+  } else {
+    temp = `Temp (F): ${data.current.temp_f}` + "\u00B0";
+    UI.celToFahr.textContent = "Celsius";
   }
-});
-
-UI.sunIcon.src = sun;
-UI.sunCloudIcon.src = sunnyCloud;
-UI.cloudIcon.src = cloud;
-UI.rainIcon.src = rain;
-UI.sunRainIcon.src = sunnyRain;
+  return temp;
+}
 
 function changeBackgroundColor(data) {
   UI.body.className = "";
@@ -82,5 +79,26 @@ function changeBackgroundColor(data) {
     UI.body.className = "thunder";
   }
 }
+
+UI.submitLocation.addEventListener("click", () => {
+  getWeather(UI.locationInput.value);
+});
+
+UI.locationInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    getWeather(UI.locationInput.value);
+  }
+});
+
+UI.celToFahr.addEventListener("click", () => {
+  UI.celsius = !UI.celsius;
+  UI.displayConditions(currentData);
+});
+
+UI.sunIcon.src = sun;
+UI.sunCloudIcon.src = sunnyCloud;
+UI.cloudIcon.src = cloud;
+UI.rainIcon.src = rain;
+UI.sunRainIcon.src = sunnyRain;
 
 export { UI };
