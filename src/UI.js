@@ -23,7 +23,7 @@ const UI = {
   rainIcon: document.querySelector("#rain-icon"),
   sunRainIcon: document.querySelector("#sun-rain-icon"),
   displayConditions: function (data) {
-    this.location.textContent = `${data.location.name}, ${data.location.region}, ${data.location.country}`;
+    this.location.textContent = `${data.location.name}, ${data.location.country}`;
     this.icons.classList.add("hide");
     this.conditionIcon.src = data.current.condition.icon;
     this.condition.textContent = `${data.current.condition.text}`;
