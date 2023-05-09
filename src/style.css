@@ -3,6 +3,11 @@
     src: url(./Fonts/FiraSans-Light.ttf);
 }
 
+@font-face {
+    font-family: "Poiret";
+    src: url(./Fonts/PoiretOne-Regular.ttf);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -15,10 +20,16 @@ html, body {
 
 body {
     font-family: 'Fira Sans Light';
+    color: rgb(44, 44, 44);
     display: flex;
     justify-content: center;
     background-color:  #fffdf7;
     transition: background-color 2s ease;
+}
+
+#main-heading {
+    margin-bottom: 50px;
+    font-family: "Poiret";
 }
 
 .main-contain {
@@ -28,15 +39,17 @@ body {
     gap: 20px;
     height: 300px;
     width: 900px;
-    margin-top: 330px;
+    margin-top: 200px;
 }
 
 .input-contain {
     display: flex;
+    align-items: center;
 }
 
 #location-input {
     width: 500px;
+    height: 35px;
     padding: 0px 40px 0px 5px;
     border: 2px solid rgb(167, 167, 167);
     border-radius: 10px;
@@ -54,6 +67,10 @@ body {
 
 #submit:hover {
     cursor: pointer;
+}
+
+#location {
+    min-height: 28px;
 }
 
 .condition-contain {
@@ -106,7 +123,7 @@ body {
 }
 
 .freezing {
-    background-color: rgb(245, 253, 255);
+    background-color: rgb(220, 241, 247);
 }
 
 .thunder {

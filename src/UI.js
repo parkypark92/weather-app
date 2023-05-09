@@ -67,15 +67,15 @@ function changeBackgroundColor(data) {
   const code = data.current.condition.code;
   if (code === 1000 || code === 1003) {
     UI.body.className = "sunny";
-  } else if (code >= 1006 || code <= 1076) {
+  } else if (code >= 1006 && code <= 1076) {
     UI.body.className = "mild";
-  } else if (code >= 1087 || code <= 1171) {
+  } else if (code >= 1087 && code <= 1171) {
     UI.body.className = "cold";
-  } else if (code >= 1180 || code <= 1195) {
+  } else if (code >= 1180 && code <= 1195) {
     UI.body.className = "showers";
-  } else if (code >= 1198 || code <= 1264) {
+  } else if (code >= 1198 && code <= 1264) {
     UI.body.className = "freezing";
-  } else if (code >= 1273 || code <= 1282) {
+  } else if (code >= 1273 && code <= 1282) {
     UI.body.className = "thunder";
   }
 }

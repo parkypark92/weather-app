@@ -18,8 +18,8 @@ async function getWeather(placename) {
   }
 }
 
-window.addEventListener("load", () => {
-  UI.location.textContent = "Welcome!";
-});
+// window.addEventListener("load", () => {
+//   UI.location.textContent = "Welcome!";
+// });
 
 export { getWeather, currentData };
